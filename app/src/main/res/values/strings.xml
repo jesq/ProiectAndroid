@@ -1,5 +1,11 @@
 <resources>
     <string name="app_name">ToDoApp</string>
+    <string name="filter_title">Filter the Todos</string>
+    <string-array name="filter_options">
+        <item>All</item>
+        <item>Active</item>
+        <item>Completed</item>
+    </string-array>
     <string name="account_question_sign_up">Don\'t have an accout? \nSign up here:</string>
     <string name="username">UserName</string>
     <string name="password">Password</string>
