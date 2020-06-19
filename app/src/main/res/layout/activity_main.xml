@@ -19,7 +19,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.333" />
+        app:layout_constraintVertical_bias="0.339" />
 
     <EditText
         android:id="@+id/PasswordTextEdit"
@@ -30,20 +30,23 @@
         android:gravity="center"
         android:hint="@string/password"
         android:inputType="textPassword"
-        app:layout_constraintBottom_toTopOf="@+id/LogInBtn"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/NameTextEdit" />
+        app:layout_constraintTop_toBottomOf="@+id/NameTextEdit"
+        app:layout_constraintVertical_bias="0.036" />
 
     <Button
         android:id="@+id/LogInBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/log_in"
-        app:layout_constraintBottom_toTopOf="@+id/SignInBtn"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/NameTextEdit" />
+        app:layout_constraintTop_toBottomOf="@+id/PasswordTextEdit"
+        app:layout_constraintVertical_bias="0.037" />
 
     <TextView
         android:id="@+id/SignTextView"
@@ -51,10 +54,11 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="@string/account_question_sign_up"
-        app:layout_constraintBottom_toTopOf="@+id/SignInBtn"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/LogInBtn" />
+        app:layout_constraintTop_toBottomOf="@+id/LogInBtn"
+        app:layout_constraintVertical_bias="0.067" />
 
     <Button
         android:id="@+id/SignInBtn"
@@ -63,7 +67,9 @@
         android:text="@string/sign_in"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/NameTextEdit" />
+        app:layout_constraintTop_toBottomOf="@+id/SignTextView"
+        app:layout_constraintVertical_bias="0.056" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
