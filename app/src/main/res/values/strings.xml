@@ -11,4 +11,9 @@
     <string name="password">Password</string>
     <string name="log_in">Log in</string>
     <string name="sign_in">Sign in</string>
+    <string name="name">Name</string>
+    <string name="secondname">SecondName</string>
+    <string name="email">Email</string>
+    <string name="confirmpassword">ConfirmPassword</string>
+    <string name="already_signed_in_login">Already signed in? Login.</string>
 </resources>
