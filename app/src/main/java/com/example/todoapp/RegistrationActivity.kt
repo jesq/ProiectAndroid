@@ -7,6 +7,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.activity_registration.*
 
 
@@ -14,6 +15,8 @@ class RegistrationActivity : AppCompatActivity() {
 
 
     private lateinit var auth: FirebaseAuth
+    private lateinit var ref: DatabaseReference
+    private lateinit var userList : MutableList<String>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,6 +35,13 @@ class RegistrationActivity : AppCompatActivity() {
         if(UsernameTextBx.text.toString().isEmpty())
         {
             UsernameTextBx.error = "Please enter a username"
+            UsernameTextBx.requestFocus()
+            return
+        }
+
+        if(!checkUsername(UsernameTextBx.text.toString()))
+        {
+            UsernameTextBx.error = "Username already taken!"
             UsernameTextBx.requestFocus()
             return
         }
@@ -83,6 +93,46 @@ class RegistrationActivity : AppCompatActivity() {
 
                 // ...
             }
+
+        ref = FirebaseDatabase.getInstance().getReference("Users")
+        val userID = ref.push().key
+
+        val users = User(userID.toString(), UsernameTextBx.text.toString(), EmailTextBx.text.toString(), PasswordTextBx.text.toString())
+
+        ref.child(userID.toString()).setValue(users).addOnCompleteListener{
+
+            Toast.makeText(applicationContext, "User Created", Toast.LENGTH_LONG).show()
+        }
+
+    }
+    
+    private fun checkUsername(username : String) : Boolean
+    {
+
+        var aux = 0
+        FirebaseDatabase.getInstance().reference
+            .child("Users")
+            .child("1")
+            .addValueEventListener(object : ValueEventListener{
+                override fun onCancelled(p0: DatabaseError) {
+
+                }
+
+                override fun onDataChange(p0: DataSnapshot) {
+                   var map = p0.value as Map<String, Any>
+                    userList.add(map["UserName"].toString())
+                }
+
+            })
+
+        for(obj in userList)
+        {
+            if(username == obj)
+            {
+                return false
+            }
+        }
+        return true
 
     }
 

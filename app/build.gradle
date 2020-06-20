@@ -37,6 +37,7 @@ dependencies {
 
     implementation "android.arch.lifecycle:extensions:$arch_version"
     implementation 'com.google.firebase:firebase-auth:16.0.5'
+    implementation 'com.google.firebase:firebase-database:16.0.4'
     annotationProcessor "android.arch.lifecycle:compiler:$arch_version"
 
     implementation "org.jetbrains.anko:anko-commons:$anko_version"
