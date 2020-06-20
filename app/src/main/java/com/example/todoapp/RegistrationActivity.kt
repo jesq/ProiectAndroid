@@ -16,7 +16,7 @@ class RegistrationActivity : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
     private lateinit var ref: DatabaseReference
-    private lateinit var userList : MutableList<String>
+    private var userList = ArrayList<User>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -109,7 +109,7 @@ class RegistrationActivity : AppCompatActivity() {
     private fun checkUsername(username : String) : Boolean
     {
 
-        var aux = 0
+
         FirebaseDatabase.getInstance().reference
             .child("Users")
             .child("1")
@@ -119,15 +119,20 @@ class RegistrationActivity : AppCompatActivity() {
                 }
 
                 override fun onDataChange(p0: DataSnapshot) {
-                   var map = p0.value as Map<String, Any>
-                    userList.add(map["UserName"].toString())
+                    if(p0!!.exists()) {
+
+                        for(h in p0.children) {
+                            var user = h.getValue(User::class.java)
+                                userList.add(user!!)
+                        }
+                    }
                 }
 
             })
 
         for(obj in userList)
         {
-            if(username == obj)
+            if(username == obj.UserName)
             {
                 return false
             }
