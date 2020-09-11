@@ -16,4 +16,5 @@
     <string name="email">Email</string>
     <string name="confirmpassword">ConfirmPassword</string>
     <string name="already_signed_in_login">Already signed in? Login.</string>
+    <string name="set_the_date">Set the Date</string>
 </resources>

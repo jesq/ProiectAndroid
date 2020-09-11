@@ -1,6 +1,6 @@
 package com.example.todoapp
 
-class User(val userID : String, val UserName : String, val Email : String, val Password : String){
+class User(var userID : String, var UserName : String, var Email : String, var Password : String){
 
     constructor() : this("", "", "", ""){}
 

@@ -3,9 +3,12 @@ package com.example.todoapp
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
+import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_registration.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -19,6 +22,19 @@ class MainActivity : AppCompatActivity() {
         SignInBtn.setOnClickListener{
             startActivity(Intent(this, RegistrationActivity::class.java))
             finish()
+        }
+
+        LogInBtn.setOnClickListener{
+            auth.signInWithEmailAndPassword(NameTextEdit.text.toString(), PasswordTextEdit.text.toString())
+                .addOnCompleteListener(this, OnCompleteListener { task ->
+                if(task.isSuccessful) {
+                    Toast.makeText(this, "Successfully Logged In", Toast.LENGTH_LONG).show()
+                    startActivity(Intent(this, ToDoActivity  ::class.java))
+                    finish()
+                }else {
+                    Toast.makeText(this, "Login Failed", Toast.LENGTH_LONG).show()
+                }
+            })
         }
 
     }
